@@ -6,53 +6,46 @@
         <div class="container">
 
             <h1>Lista dei Treni</h1>
-            @foreach ($trains as $train)
-                <div class="card my-5">
-                    <div class="card-title p-3">
-                        <h1>
-                            {{$train->codice}}
-                        </h1>
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <h3> Azienda: </h3>
-                            <p>{{$train->azienda}}</p>
-                        </div>
-                        <div>
-                            <h3> Stazione di partenza: </h3>
-                            <p>{{$train->stazione_partenza}}</p>
-                            <h3> Orario di partenza: </h3>
-                            <p>{{$train->orario_partenza}}</p>
-                        </div>
-                        <div>
-                            <h3> Stazione di arrivo: </h3>
-                            <p>{{$train->stazione_arrivo}}</p>
-                            <h3> Orario di arrivo: </h3>
-                            <p>{{$train->orario_arrivo}}</p>
-                        </div>
-                        <div>
-                            <h3> Numero di carrozze: </h3>
-                            <p>{{$train->numero_carrozze}}</p>
-                        </div>
-                        <div>
-                            <h3> In orario: </h3>
-                            @if($train->in_orario)
-                                <p> Sì </p>
-                            @else
-                            <p> No </p>
-                            @endif
-                        </div>
-                        <div>
-                            <h3> Cancellato: </h3>
-                            @if($train->cancellato)
-                                <p> Sì </p>
-                            @else
-                            <p> No </p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+            <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Codice</th>
+                    <th scope="col">Azienda</th>
+                    <th scope="col">Giorno Partenza</th>
+                    <th scope="col">Stazione Partenza</th>
+                    <th scope="col">Orario Partenza</th>
+                    <th scope="col">Stazione Arrivo</th>
+                    <th scope="col">Orario Arrivo</th>
+                    <th scope="col">Numero Carrozze</th>
+                    <th scope="col">In Orario</th>
+                    <th scope="col">Cancellato</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($trains as $train)
+                  <tr>
+                        <td>{{$train->codice}}</td>
+                        <td>{{$train->azienda}}</td>
+                        <td>{{$train->giorno_partenza}}</td>
+                        <td>{{$train->stazione_partenza}}</td>
+                        <td>{{$train->orario_partenza}}</td>
+                        <td>{{$train->stazione_arrivo}}</td>
+                        <td>{{$train->orario_arrivo}}</td>
+                        <td>{{$train->numero_carrozze}}</td>
+                        @if($train->in_orario)
+                          <td>Sì</td>
+                        @else
+                          <td>No</td>
+                        @endif
+                        @if($train->cancellato)
+                            <td> Sì </td>
+                        @else
+                            <td>No</td>
+                        @endif
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
         </div>
     </main>
 @endsection

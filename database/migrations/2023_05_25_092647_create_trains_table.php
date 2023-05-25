@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('codice' , 5);
 			$table->string('azienda', 50);
 			$table->string('stazione_partenza', 50);
+            $table->date('giorno_partenza');
 			$table->time('orario_partenza');
 			$table->string('stazione_arrivo', 50);
 			$table->time('orario_arrivo');
